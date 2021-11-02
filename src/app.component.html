@@ -1,0 +1,31 @@
+<ul class="tree">
+  <li *ngFor="let item of data; let i = index">
+    <div class="list-item">
+
+      <button (click)="item.toggle = !item.toggle" [attr.id]="i"> {{item.toggle ? '-' : '+' }} </button>
+      <label class="tree_label" [attr.for]="i" [innerHtml]="item.termHtml ? item.termHtml : item.term"></label>
+      {{item.count}}
+    </div>
+    <div *ngIf="item.children && item.toggle">
+      <ng-container [ngTemplateOutlet]="tree" [ngOutletContext]="{ $implicit: item.children, idx : i}">
+
+      </ng-container>
+    </div>
+  </li>
+</ul>
+<template #tree let-allItems let-idx="idx">
+  <ul>
+    <li *ngFor="let item of allItems; let subIdx = index">
+      <div class="list-item">
+        <button (click)="item.toggle = !item.toggle" [attr.id]="idx + '.' + subIdx" *ngIf="item.children"> {{item.toggle ? '-' : '+' }}
+        </button>
+        <label class="tree_label" [attr.for]="idx + '.' + subIdx" [innerHtml]="item.termHtml ? item.termHtml : item.term"></label>
+        {{item.count}}
+      </div>
+      <div *ngIf="item.children && item.toggle">
+        <ng-container [ngTemplateOutlet]="tree" [ngOutletContext]="{ $implicit: item.children, idx: idx + '.' + subIdx}">
+        </ng-container>
+      </div>
+    </li>
+  </ul>
+</template>
