@@ -1,11 +1,9 @@
-### 注意：新版本（Angular 4 + Angular CLI）已迁移至新repo
+Challenge
 
-https://github.com/angular-programming/angular-hello-world
-
-## Usage
-
-- Clone or fork this repository
-- Make sure you have node.js(> 4.0) installed
-- run `npm install` to install dependencies
-- run `npm start` to fire up dev server
-- open browser to http://localhost:3000
+TODO:
+Fork this codepen into your own codepen and make all mentioned below changes there
+Implement infinite tree to show 'data' (test data already defined below, should be done in AppComponent without additional component)
+Component should support any number of nested levels
+Show item label (render 'termHtml' markup if exists or 'term' otherwise) and count
+Add Expand/Collapse for all levels. Use '+'/'-' symbols for them
+Make UI as simple as possible
